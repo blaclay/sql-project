@@ -20,7 +20,7 @@ class LicensePlate(Base):
     model_name = Column(String())
     model_year = Column(Integer())
 
-    owners = relationship('Owner', backref=backref('owner_name'))
+    
 
 
 class Owner(Base):
@@ -31,3 +31,26 @@ class Owner(Base):
     age = Column(Integer())
     address = Column(String())
     # vehicle_id = Column(Integer(), ForeignKey('license_plates.id'))
+    
+    license_plates = relationship('LicensePlate', backref=backref('owner'))
+
+
+class Make(Base):
+    __tablename__ = 'makes'
+
+    id = Column(Integer(), primary_key=True)
+    name = Column(String())
+    # vehicle_id = Column(Integer(), ForeignKey('license_plates.id'))
+    
+    license_plates = relationship('LicensePlate', backref=backref('model'))
+
+
+class Model(Base):
+    __tablename__ = 'models'
+
+    id = Column(Integer(), primary_key=True)
+    make_id = Column(Integer(), ForeignKey('makes.id'))
+    name = Column(String())
+    # vehicle_id = Column(Integer(), ForeignKey('license_plates.id'))
+    
+    license_plates = relationship('Make', backref=backref('make'))
