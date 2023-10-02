@@ -24,8 +24,16 @@ if __name__ == '__main__':
     # should makes and models be combined? ex: ['nakamura si-7', 'watson r-turbo']
     # year ????
 
-    makes = ['bennett', 'carson', 'hunter', 'krieger', 'nakamura', 'nmc', 'watson']
-    models = ['annihilator', 'si-7', 'r-turbo']
+    makes = []
+    makes_list = ['bennett', 'carson', 'hunter', 'krieger', 'nakamura', 'nmc', 'watson']
+    for make_name in makes_list:
+        make = Make(
+            name=make_name
+        )
+
+        makes.append(make)
+
+    models = ['cabrio', 'coupe', 'ev', 'fastback', 'hatch', 'minivan', 'pickup', 'sedan', 'sport', 'sport turbo', 'truck', "type 1", 'v6', 'v8', 'v10', 'v12', 'van']
 
     reviews = []
     for game in games:
