@@ -6,7 +6,7 @@ import random
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import LicensePlate, Owner
+from models import LicensePlate, Owner, Make, Model
 
 if __name__ == '__main__':
     engine = create_engine('sqlite:///project_3.db')
@@ -15,32 +15,17 @@ if __name__ == '__main__':
 
     session.query(LicensePlate).delete()
     session.query(Owner).delete()
+    session.query(Make).delete()
+    session.query(Model).delete()
 
     fake = Faker()
 
     # makes = ['chevrolet', 'chrysler', 'dodge', 'ford', 'gmc', 'honda', 'hyundai', 'kia', 'maserati', 'nissan', 'toyota',]
-    makes = ['bennett', 'carson', 'hunter', 'krieger', 'nakamura', 'nmc', 'watson']
-    models = ['annihilator', 'si-7', ]
     # should makes and models be combined? ex: ['nakamura si-7', 'watson r-turbo']
     # year ????
-    platforms = ['nintendo 64', 'gamecube', 'wii', 'wii u', 'switch',
-        'playstation', 'playstation 2', 'playstation 3', 'playstation 4',
-        'playstation 5', 'xbox', 'xbox 360', 'xbox one', 'pc']
 
-    games = []
-    for i in range(50):
-        game = Game(
-            title=fake.unique.name(),
-            genre=random.choice(genres),
-            platform=random.choice(platforms),
-            price=random.randint(5, 60)
-        )
-
-        # add and commit individually to get IDs back
-        session.add(game)
-        session.commit()
-
-        games.append(game)
+    makes = ['bennett', 'carson', 'hunter', 'krieger', 'nakamura', 'nmc', 'watson']
+    models = ['annihilator', 'si-7', 'r-turbo']
 
     reviews = []
     for game in games:
@@ -52,7 +37,25 @@ if __name__ == '__main__':
             )
 
             reviews.append(review)
+
+    
+    license_plates = []
+    for i in range(50):
+        license_plate = LicensePlate(
+            owner=fake.unique.name(),
+            make=random.choice(makes),
+            model=random.choice(models),
+            year=random.randint(1990, 2023)
+        )
+
+        # add and commit individually to get IDs back
+        session.add(license_plate)
+        session.commit()
+
+        license_plates.append(license_plate)
     
     session.bulk_save_objects(reviews)
     session.commit()
     session.close()
+
+    
