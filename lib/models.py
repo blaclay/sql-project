@@ -18,6 +18,12 @@ class LicensePlate(Base):
     owner_id = Column(Integer(), ForeignKey('owners.id'))
     model_id = Column(Integer(), ForeignKey('models.id'))
 
+    def __repr__(self):
+        return f'LicensePlate(id={self.id}, ' + \
+            f'plate_number={self.plate_number}, ' + \
+            f'owner_id={self.owner_id}, ' + \
+            f'model_id={self.model_id})'
+
 class Owner(Base):
     __tablename__ = 'owners'
 
@@ -28,6 +34,12 @@ class Owner(Base):
     # vehicle_id = Column(Integer(), ForeignKey('license_plates.id'))
     
     license_plates = relationship('LicensePlate', backref=backref('owner'))
+
+    def __repr__(self):
+        return f'Owner(id={self.id}, ' + \
+            f'name={self.name}, ' + \
+            f'age={self.age}, ' + \
+            f'address={self.address})'
 
 
 class Make(Base):
