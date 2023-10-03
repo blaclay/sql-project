@@ -30,7 +30,8 @@ if __name__ == '__main__':
         make = Make(
             name=make_name
         )
-
+        session.add(make)
+        session.commit()
         makes.append(make)
 
     models = []
@@ -43,6 +44,8 @@ if __name__ == '__main__':
             year=random.randint(1960, 2015)
         )
 
+        session.add(model)
+        session.commit()
         models.append(model)
 
     # reviews = []
@@ -75,8 +78,9 @@ if __name__ == '__main__':
 
         license_plates.append(license_plate)
     
-    session.bulk_save_objects(reviews)
+    session.bulk_save_objects(makes)
+    session.bulk_save_objects(models)
+    session.bulk_save_objects(owners)
+    session.bulk_save_objects(license_plates)
     session.commit()
     session.close()
-
-    
