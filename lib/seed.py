@@ -76,10 +76,9 @@ if __name__ == '__main__':
     license_plates = []
     for i in range(50):
         license_plate = LicensePlate(
-            owner=fake.unique.name(),
-            make=random.choice(makes),
-            model=random.choice(models),
-            year=random.randint(1990, 2023)
+            plate_number=fake.license_plate(),
+            owner=random.choice(owners),
+            model=random.choice(models)
         )
 
         session.add(license_plate)
