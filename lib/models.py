@@ -53,7 +53,7 @@ class Make(Base):
 
     def __repr__(self):
         return f'Make(id={self.id}, ' + \
-            f'name={self.name}, '
+            f'name={self.name}'
 
 
 class Model(Base):
@@ -70,4 +70,4 @@ class Model(Base):
         return f'Model(id={self.id}, ' + \
             f'make_id={self.make_id}, ' + \
             f'name={self.name}, ' + \
-            f'year={self.year}, '
+            f'year={self.year}'
