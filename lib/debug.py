@@ -3,7 +3,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import Game, Review
+from models import LicensePlate, Owner, Make, Model
 
 if __name__ == '__main__':
     engine = create_engine('sqlite:///project_3.db')
