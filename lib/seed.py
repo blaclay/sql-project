@@ -33,18 +33,32 @@ if __name__ == '__main__':
 
         makes.append(make)
 
-    models = ['cabrio', 'coupe', 'ev', 'fastback', 'hatch', 'minivan', 'pickup', 'sedan', 'sport', 'sport turbo', 'truck', "type 1", 'v6', 'v8', 'v10', 'v12', 'van']
+    models = []
+    models_list = ['cabrio', 'coupe', 'ev', 'fastback', 'hatch', 'minivan', 'pickup', 'sedan', 'sport', 'sport turbo', 'truck', "type 1", 'v6', 'v8', 'v10', 'v12', 'van']
+    for model_name in models_list:
+        model = Model(
+            name=model_name,
+            # make_id = Column(Integer(), ForeignKey('makes.id'))
+            make_id=random.choice(makes).id,
+            year=random.randint(1960, 2015)
+        )
 
-    reviews = []
-    for game in games:
-        for i in range(random.randint(1,5)):
-            review = Review(
-                score=random.randint(0, 10),
-                comment=fake.sentence(),
-                game_id=game.id
-            )
+        models.append(model)
 
-            reviews.append(review)
+    # reviews = []
+    # for game in games:
+    #     for i in range(random.randint(1,5)):
+    #         review = Review(
+    #             score=random.randint(0, 10),
+    #             comment=fake.sentence(),
+    #             game_id=game.id
+    #         )
+
+    #         reviews.append(review)
+
+    owners = []
+    for owner in owners:
+        ()
 
     
     license_plates = []
@@ -56,7 +70,6 @@ if __name__ == '__main__':
             year=random.randint(1990, 2023)
         )
 
-        # add and commit individually to get IDs back
         session.add(license_plate)
         session.commit()
 
