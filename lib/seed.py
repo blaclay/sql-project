@@ -66,7 +66,13 @@ if __name__ == '__main__':
             age=random.randint(16, 80),
             address=fake.address()
         )
+
+        session.add(owner)
+        session.commit()
+
+        owners.append(owner)
     
+
     license_plates = []
     for i in range(50):
         license_plate = LicensePlate(
@@ -81,6 +87,7 @@ if __name__ == '__main__':
 
         license_plates.append(license_plate)
     
+
     session.bulk_save_objects(makes)
     session.bulk_save_objects(models)
     session.bulk_save_objects(owners)
