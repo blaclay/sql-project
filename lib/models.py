@@ -51,6 +51,10 @@ class Make(Base):
     
     models = relationship('Model', backref=backref('make'))
 
+    def __repr__(self):
+        return f'Make(id={self.id}, ' + \
+            f'name={self.name}, '
+
 
 class Model(Base):
     __tablename__ = 'models'
@@ -61,3 +65,9 @@ class Model(Base):
     year = Column(Integer())
     
     license_plates = relationship('LicensePlate', backref=backref('model'))
+
+    def __repr__(self):
+        return f'Model(id={self.id}, ' + \
+            f'make_id={self.make_id}, ' + \
+            f'name={self.name}, ' + \
+            f'year={self.year}, '
