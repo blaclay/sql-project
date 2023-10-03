@@ -25,7 +25,7 @@ if __name__ == '__main__':
     # year ????
 
     makes = []
-    makes_list = ['bennett', 'carson', 'hunter', 'krieger', 'nakamura', 'nmc', 'watson']
+    makes_list = ['Autobello', 'Bennett', 'Bruckell', 'Burnside', 'Carson', 'Cherrier', 'Civetta', 'Dalton-Moore', 'Dobson', 'ETK', 'Gavril', 'Hirochi', 'Hunter', 'Ibishu', 'Jansen', 'Kitano', 'Krieger', 'Montgomery', 'Nakamura', 'NMC', 'Rodman', 'Rossolini', 'Soliad', 'Wagner', 'Watson']
     for make_name in makes_list:
         make = Make(
             name=make_name
@@ -35,7 +35,7 @@ if __name__ == '__main__':
         makes.append(make)
 
     models = []
-    models_list = ['cabrio', 'coupe', 'ev', 'fastback', 'hatch', 'minivan', 'pickup', 'sedan', 'sport', 'sport turbo', 'truck', "type 1", 'v6', 'v8', 'v10', 'v12', 'van']
+    models_list = ['Cab', 'Cabrio', 'Convertible', 'Coupe', 'Crossover', 'EV', 'Executive', 'Fastback', 'GT', 'Hatch', 'Metro', 'Mini', 'Minivan', 'Muscle', 'Pickup', 'Premier', 'Roadster', 'Sedan', 'Sport', 'Sportster', 'Sport Turbo', 'Standard', 'SUV', 'Truck', 'Utility', 'V6', 'V8', 'V10', 'V12', 'Van', 'Wagon', 'Custom', 'Mainline', 'Deluxe', 'Special', 'Cruiser', 'Tuner']
     for model_name in models_list:
         model = Model(
             name=model_name,
