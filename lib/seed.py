@@ -60,9 +60,12 @@ if __name__ == '__main__':
     #         reviews.append(review)
 
     owners = []
-    for owner in owners:
-        ()
-
+    for i in range(45):
+        owner = Owner(
+            name=fake.unique.name(),
+            age=random.randint(16, 80),
+            address=fake.address()
+        )
     
     license_plates = []
     for i in range(50):
